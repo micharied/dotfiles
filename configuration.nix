@@ -93,6 +93,8 @@
       ];
   };
 
+  programs.dconf.enable = true;
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -104,11 +106,11 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     haskellPackages.nixfmt
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     gnomeExtensions.appindicator
   ];
 
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
