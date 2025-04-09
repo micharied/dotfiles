@@ -144,8 +144,8 @@
   # Perform garbage collection weekly to maintain low disk usage
   nix.gc = {
     automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
+    dates = "monthly";
+    options = "--delete-older-than 1m";
   };
 
   # Optimize storage
