@@ -41,6 +41,7 @@
       thunderbird
       libreoffice
       dconf2nix
+      nextcloud-client
     ];
 
     # This value determines the home Manager release that your
@@ -55,22 +56,5 @@
 
     # Let home Manager install and manage itself.
     programs.home-manager.enable = true;
-
-    services.nextcloud-client = {
-      enable = true;
-      startInBackground = true;
-    };
-
-    xsession.enable = true;
-    xsession.windowManager.command = "…";
-
-    dconf.settings = {
-
-      "org/gnome/shell" = {
-        disable-user-extensions = false;
-        "enabled-extensions" = [ "appindicatorsupport@rgcjonas.gmail.com" ];
-      };
-    };
-
   };
 }
