@@ -42,6 +42,7 @@
       libreoffice
       dconf2nix
       nextcloud-client
+      android-studio
     ];
 
     # This value determines the home Manager release that your
