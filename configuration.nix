@@ -13,6 +13,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.initrd.luks.devices."luks-31e10096-7b72-488c-87b3-991c4b9117fb".device =
     "/dev/disk/by-uuid/31e10096-7b72-488c-87b3-991c4b9117fb";
   networking.hostName = "nixos"; # Define your hostname.
@@ -156,4 +158,6 @@
   # Refer to the following link for more details:
   # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
   nix.settings.auto-optimise-store = true;
+
+  services.tailscale.enable = true;
 }
