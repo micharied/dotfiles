@@ -37,7 +37,6 @@
       # feel free to add your own or remove some of them
       vscode
       mattermost-desktop
-      direnv
       thunderbird
       libreoffice
       dconf2nix
@@ -46,7 +45,11 @@
       signal-desktop
     ];
 
-
+   programs.direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = false;
+    };
     # This value determines the home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new home Manager release introduces backwards
