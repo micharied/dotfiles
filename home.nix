@@ -43,6 +43,9 @@
       nextcloud-client
       android-studio
       signal-desktop
+      remnote
+      android-tools
+      vial
     ];
 
    programs.direnv = {
