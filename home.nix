@@ -46,6 +46,7 @@
       remnote
       android-tools
       vial
+      discord
     ];
 
    programs.direnv = {
