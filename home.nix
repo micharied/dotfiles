@@ -47,6 +47,7 @@
       android-tools
       vial
       discord
+      gimp
     ];
 
    programs.direnv = {
