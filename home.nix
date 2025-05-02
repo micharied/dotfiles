@@ -48,6 +48,14 @@
       vial
       discord
       gimp
+
+      scala
+      scalafmt
+      coursier
+      sbt
+      metals
+      openjdk
+      clang
     ];
 
    programs.direnv = {
