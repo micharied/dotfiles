@@ -105,6 +105,10 @@ with lib.hm.gvariant;
       show-whose-processes = "user";
     };
 
+    "org/gnome/desktop/peripherals/touchpad" = {
+      speed = 0.375;
+    };
+
     "org/gnome/gnome-system-monitor/proctree" = {
       col-26-visible = false;
       col-26-width = 0;
