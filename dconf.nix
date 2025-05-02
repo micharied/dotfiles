@@ -87,7 +87,12 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/session" = {
-      idle-delay = mkUint32 480;
+      idle-delay = mkUint32 180;
+    };
+
+    "org/gnome/desktop/screensaver" = {
+      lock-enabled = true;
+      lock-delay = mkUint32 1800;
     };
 
     "org/gnome/evolution-data-server" = {
