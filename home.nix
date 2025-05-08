@@ -30,6 +30,8 @@
       "Xcursor.size" = 16;
       "Xft.dpi" = 172;
     };
+    
+    
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
@@ -42,6 +44,11 @@
       dconf2nix
       nextcloud-client
       android-studio
+      (pkgs.writeShellScriptBin "myandroidstudio" ''
+        #!/usr/bin/env bash
+        adb devices
+        ${pkgs.android-studio}/bin/android-studio &>/dev/null &  
+      '')
       signal-desktop
       remnote
       android-tools
@@ -58,7 +65,15 @@
       clang
     ];
 
-   programs.direnv = {
+    programs.java = {
+      enable = true;
+      package = pkgs.openjdk;
+    };
+
+    programs.bash.bashrcExtra =
+      "\n    # Enable direnv\n    eval \"$(direnv hook bash)\"\n    ";
+
+    programs.direnv = {
       enable = true;
       enableBashIntegration = true; # see note on other shells below
       nix-direnv.enable = false;

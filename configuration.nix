@@ -88,7 +88,7 @@
   users.users.micha = {
     isNormalUser = true;
     description = "Micha";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
     packages = with pkgs;
       [
         #  thunderbird
@@ -114,7 +114,10 @@
 
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
-
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="8d1d", ATTRS{idProduct}=="ec17", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl" 
+  '';
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -161,4 +164,6 @@
   nix.settings.auto-optimise-store = true;
 
   services.tailscale.enable = true;
+
+  programs.adb.enable = true;
 }
