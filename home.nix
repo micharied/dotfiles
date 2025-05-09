@@ -74,7 +74,6 @@
       "\n    # Enable direnv\n    eval \"$(direnv hook bash)\"\n    ";
 
     programs.bash.shellAliases = {
-     shellAliases = {
         "gaa" = "git add -A";
         "gs" = "git status -s -b";
         "gcm" = "git commit -m";
