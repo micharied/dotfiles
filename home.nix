@@ -47,7 +47,7 @@
       (pkgs.writeShellScriptBin "myandroidstudio" ''
         #!/usr/bin/env bash
         adb devices
-        ${pkgs.android-studio}/bin/android-studio /dev/null 2>&1 &
+        ${pkgs.android-studio}/bin/android-studio > /dev/null 2>&1 &
       '')
       signal-desktop
       remnote
