@@ -70,6 +70,7 @@
       package = pkgs.openjdk;
     };
 
+    programs.bash.enable = true;
     programs.bash.bashrcExtra =
       "\n    # Enable direnv\n    eval \"$(direnv hook bash)\"\n    ";
 
