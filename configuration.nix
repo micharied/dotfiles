@@ -106,18 +106,38 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    haskellPackages.nixfmt
-    adwaita-icon-theme
-    gnomeExtensions.appindicator
-  ];
+  environment = {
+
+    systemPackages = with pkgs; [
+      haskellPackages.nixfmt
+      adwaita-icon-theme
+      gnomeExtensions.appindicator
+    ];
+
+    gnome.excludePackages = with pkgs; [
+      gnome-tour
+      gedit
+      # cheese # webcam tool
+      gnome-music
+      epiphany # web browser
+      geary # email reader
+      gnome-characters
+      gnome-contacts
+      gnome-calendar
+      gnome-weather
+      gnome-font-viewer
+      gnome-maps
+      yelp
+      gnome-initial-setup
+    ];
+  };
 
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="8d1d", ATTRS{idProduct}=="ec17", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl" 
   '';
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -166,4 +186,5 @@
   services.tailscale.enable = true;
 
   programs.adb.enable = true;
+
 }
