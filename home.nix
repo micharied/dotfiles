@@ -30,8 +30,6 @@
       "Xcursor.size" = 16;
       "Xft.dpi" = 172;
     };
-    
-    
 
     # Packages that should be installed to the user profile.
     home.packages = with pkgs; [
@@ -75,20 +73,20 @@
       "\n    # Enable direnv\n    eval \"$(direnv hook bash)\"\n    ";
 
     programs.bash.shellAliases = {
-        "gaa" = "git add -A";
-        "gs" = "git status -s -b";
-        "gcm" = "git commit -m";
-        "gam" = "git add . && git commit -m";
-        "gp" = "git push";
-        "gpu" = "git push --set-upstream";
-        "gpuo" = "git push --set-upstream origin";
-        "gf" = "git pull";
-        "gF" = "git fetch";
-        "gca" = "git commit --amend";
-        "gcan" = "git commit --amend --no-edit";
-        "gacan" = "git add . && git commit --amend --no-edit";
-        "gash" = "git stash";
-        "gpop" = "git stash pop";
+      "gaa" = "git add -A";
+      "gs" = "git status -s -b";
+      "gcm" = "git commit -m";
+      "gam" = "git add . && git commit -m";
+      "gp" = "git push";
+      "gpu" = "git push --set-upstream";
+      "gpuo" = "git push --set-upstream origin";
+      "gf" = "git pull";
+      "gF" = "git fetch";
+      "gca" = "git commit --amend";
+      "gcan" = "git commit --amend --no-edit";
+      "gacan" = "git add . && git commit --amend --no-edit";
+      "gash" = "git stash";
+      "gpop" = "git stash pop";
     };
 
     programs.direnv = {

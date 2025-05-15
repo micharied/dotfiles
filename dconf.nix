@@ -6,7 +6,8 @@ with lib.hm.gvariant;
 {
   dconf.settings = {
     "apps/seahorse/listing" = {
-      keyrings-selected = [ "secret-service:///org/freedesktop/secrets/collection/Login" ];
+      keyrings-selected =
+        [ "secret-service:///org/freedesktop/secrets/collection/Login" ];
     };
 
     "apps/seahorse/windows/key-manager" = {
@@ -14,9 +15,7 @@ with lib.hm.gvariant;
       width = 600;
     };
 
-    "org/gnome/Connections" = {
-      first-run = false;
-    };
+    "org/gnome/Connections" = { first-run = false; };
 
     "org/gnome/Console" = {
       last-window-maximised = true;
@@ -44,7 +43,21 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/app-folders/folders/Utilities" = {
-      apps = [ "org.freedesktop.GnomeAbrt.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.font-viewer.desktop" "org.gnome.Loupe.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" ];
+      apps = [
+        "org.freedesktop.GnomeAbrt.desktop"
+        "nm-connection-editor.desktop"
+        "org.gnome.baobab.desktop"
+        "org.gnome.Connections.desktop"
+        "org.gnome.DejaDup.desktop"
+        "org.gnome.DiskUtility.desktop"
+        "org.gnome.Evince.desktop"
+        "org.gnome.FileRoller.desktop"
+        "org.gnome.font-viewer.desktop"
+        "org.gnome.Loupe.desktop"
+        "org.gnome.seahorse.Application.desktop"
+        "org.gnome.tweaks.desktop"
+        "org.gnome.Usage.desktop"
+      ];
       categories = [ "X-GNOME-Utilities" ];
       name = "X-GNOME-Utilities.directory";
       translate = true;
@@ -58,12 +71,18 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/input-sources" = {
       mru-sources = [ (mkTuple [ "xkb" "de" ]) ];
-      sources = [ (mkTuple [ "xkb" "de" ]) (mkTuple [ "xkb" "us+colemak_dh" ]) ];
+      sources =
+        [ (mkTuple [ "xkb" "de" ]) (mkTuple [ "xkb" "us+colemak_dh" ]) ];
       xkb-options = [ "terminate:ctrl_alt_bksp" ];
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "firefox" "org-gnome-console" "org-gnome-nautilus" "gnome-power-panel" ];
+      application-children = [
+        "firefox"
+        "org-gnome-console"
+        "org-gnome-nautilus"
+        "gnome-power-panel"
+      ];
     };
 
     "org/gnome/desktop/notifications/application/firefox" = {
@@ -82,22 +101,16 @@ with lib.hm.gvariant;
       application-id = "org.gnome.Nautilus.desktop";
     };
 
-    "org/gnome/desktop/peripherals/keyboard" = {
-      numlock-state = true;
-    };
+    "org/gnome/desktop/peripherals/keyboard" = { numlock-state = true; };
 
-    "org/gnome/desktop/session" = {
-      idle-delay = mkUint32 180;
-    };
+    "org/gnome/desktop/session" = { idle-delay = mkUint32 180; };
 
     "org/gnome/desktop/screensaver" = {
       lock-enabled = true;
       lock-delay = mkUint32 1800;
     };
 
-    "org/gnome/evolution-data-server" = {
-      migrated = true;
-    };
+    "org/gnome/evolution-data-server" = { migrated = true; };
 
     "org/gnome/gnome-system-monitor" = {
       current-tab = "processes";
@@ -105,14 +118,39 @@ with lib.hm.gvariant;
       show-whose-processes = "user";
     };
 
-    "org/gnome/desktop/peripherals/touchpad" = {
-      speed = 0.375;
-    };
+    "org/gnome/desktop/peripherals/touchpad" = { speed = 0.375; };
 
     "org/gnome/gnome-system-monitor/proctree" = {
       col-26-visible = false;
       col-26-width = 0;
-      columns-order = [ 0 12 1 2 3 4 6 7 8 9 10 11 13 14 15 16 17 18 19 20 21 22 23 24 25 26 ];
+      columns-order = [
+        0
+        12
+        1
+        2
+        3
+        4
+        6
+        7
+        8
+        9
+        10
+        11
+        13
+        14
+        15
+        16
+        17
+        18
+        19
+        20
+        21
+        22
+        23
+        24
+        25
+        26
+      ];
       sort-col = 0;
       sort-order = 0;
     };
@@ -123,9 +161,7 @@ with lib.hm.gvariant;
       search-filter-time-type = "last_modified";
     };
 
-    "org/gnome/nautilus/window-state" = {
-      initial-size = mkTuple [ 890 550 ];
-    };
+    "org/gnome/nautilus/window-state" = { initial-size = mkTuple [ 890 550 ]; };
 
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-schedule-automatic = false;
@@ -133,15 +169,13 @@ with lib.hm.gvariant;
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      disabled-extensions = [];
+      disabled-extensions = [ ];
       enabled-extensions = [ "appindicatorsupport@rgcjonas.gmail.com" ];
       last-selected-power-profile = "performance";
       welcome-dialog-last-shown-version = "47.2";
     };
 
-    "org/gnome/shell/world-clocks" = {
-      locations = [];
-    };
+    "org/gnome/shell/world-clocks" = { locations = [ ]; };
 
     "org/gtk/gtk4/settings/file-chooser" = {
       date-format = "regular";
