@@ -53,6 +53,7 @@
       vial
       discord
       gimp
+      zoom-us
 
       scala
       scalafmt
