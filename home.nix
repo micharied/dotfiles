@@ -54,6 +54,7 @@
       discord
       gimp
       zoom-us
+      google-chrome
 
       scala
       scalafmt
