@@ -55,6 +55,7 @@
       gimp
       zoom-us
       google-chrome
+      scrcpy
 
       scala
       scalafmt
