@@ -56,6 +56,7 @@
       zoom-us
       google-chrome
       scrcpy
+      quickemu
 
       scala
       scalafmt
