@@ -91,6 +91,8 @@
       "gacan" = "git add . && git commit --amend --no-edit";
       "gash" = "git stash";
       "gpop" = "git stash pop";
+      "runmacvm" = "quickemu --vm macos-sonoma.conf --width 1920 --height 1080";
+
     };
 
     programs.direnv = {
