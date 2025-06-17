@@ -58,9 +58,13 @@
       scrcpy
       quickemu
 
+                  pkgs.webkitgtk_4_0
+            pkgs.gtk3
+
       scala
       scalafmt
       coursier
+      ivy
       sbt
       metals
       openjdk
