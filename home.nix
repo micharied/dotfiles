@@ -84,6 +84,7 @@
       "gaa" = "git add -A";
       "gs" = "git status -s -b";
       "gcm" = "git commit -m";
+      "grsh" = "git reset --hard";
       "gam" = "git add . && git commit -m";
       "gp" = "git push";
       "gpu" = "git push --set-upstream";
