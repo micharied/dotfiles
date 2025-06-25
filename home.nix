@@ -58,8 +58,8 @@
       scrcpy
       quickemu
 
-                  pkgs.webkitgtk_4_0
-            pkgs.gtk3
+      pkgs.webkitgtk_4_0
+      pkgs.gtk3
 
       scala
       scalafmt
@@ -97,7 +97,9 @@
       "gash" = "git stash";
       "gpop" = "git stash pop";
       "runmacvm" = "quickemu --vm macos-sonoma.conf --width 1920 --height 1080";
-
+      # Note: Bash aliases do not accept parameters. Use a shell function instead.
+      runhspec =
+        ''runhspec() { cabal test --test-options="--match=$1"; }; runhspec'';
     };
 
     programs.direnv = {
