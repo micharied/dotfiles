@@ -13,7 +13,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = ["intel_pstate=disable"];
+  boot.kernelParams = [ "intel_pstate=disable" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.luks.devices."luks-31e10096-7b72-488c-87b3-991c4b9117fb".device =
@@ -198,5 +198,10 @@
   services.tailscale.enable = true;
 
   programs.adb.enable = true;
+
+  # Obelisk
+  nix.binaryCaches = [ "https://nixcache.reflex-frp.org" ];
+  nix.binaryCachePublicKeys =
+    [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
 
 }
