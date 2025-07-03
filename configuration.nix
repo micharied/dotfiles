@@ -35,6 +35,7 @@
       turbo = "auto";
     };
   };
+   services.thermald.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
