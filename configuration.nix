@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     ./cachix.nix
   ];
-  
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -36,7 +36,9 @@
       turbo = "auto";
     };
   };
-   services.thermald.enable = true;
+  services.thermald.enable = true;
+
+  services.preload.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
