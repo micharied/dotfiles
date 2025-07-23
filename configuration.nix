@@ -5,7 +5,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [ # Include the results of the hardware sscan.
     ./hardware-configuration.nix
     ./cachix.nix
   ];
