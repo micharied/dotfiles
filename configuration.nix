@@ -5,40 +5,24 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware sscan.
-    ./hardware-configuration.nix
-    ./cachix.nix
-  ];
+  imports =
+    [ # Include the results of the hardware scan.
+      ./hardware-configuration.nix
+    ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelParams = [ "intel_pstate=disable" ];
+  # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.initrd.luks.devices."luks-31e10096-7b72-488c-87b3-991c4b9117fb".device =
-    "/dev/disk/by-uuid/31e10096-7b72-488c-87b3-991c4b9117fb";
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  services.auto-cpufreq.settings = {
-    battery = {
-      governor = "powersave";
-      turbo = "never";
-    };
-    charger = {
-      governor = "performance";
-      turbo = "auto";
-    };
-  };
-  services.thermald.enable = true;
-
-  services.preload.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -179,11 +163,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
-
-  # Limit the number of generations to keep
-  boot.loader.systemd-boot.configurationLimit = 10;
-  # boot.loader.grub.configurationLimit = 10;
+  system.stateVersion = "25.05"; # Did you read the comment?
 
   # Perform garbage collection weekly to maintain low disk usage
   nix.gc = {
@@ -197,15 +177,22 @@
   #    nix-store --optimise
   # Refer to the following link for more details:
   # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-  nix.settings.auto-optimise-store = true;
+  nix.settings.auto-optimise-store = true;  
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
+  services.thermald.enable = true;
+
+  services.preload.enable = true;
 
   services.tailscale.enable = true;
 
   programs.adb.enable = true;
-
-  # Obelisk
-  nix.binaryCaches = [ "https://nixcache.reflex-frp.org" ];
-  nix.binaryCachePublicKeys =
-    [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" ];
-
 }
