@@ -55,11 +55,8 @@
       gimp
       zoom-us
       google-chrome
-      scrcpy
-      quickemu
-
-      pkgs.webkitgtk_4_0
-      pkgs.gtk3
+      docker
+      docker-compose
 
       scala
       scalafmt
