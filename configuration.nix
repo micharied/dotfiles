@@ -88,12 +88,14 @@
   users.users.micha = {
     isNormalUser = true;
     description = "Micha";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker"];
     packages = with pkgs;
       [
         #  thunderbird
       ];
   };
+
+  virtualisation.docker.enable = true;
 
   programs.dconf.enable = true;
 
