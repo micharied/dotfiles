@@ -69,6 +69,9 @@
       clang
 
       jetbrains.idea-ultimate
+      keepassxc
+
+      libsForQt5.arianna
     ];
 
     programs.java = {
