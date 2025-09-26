@@ -95,10 +95,9 @@
       "gf" = "git pull";
       "gF" = "git fetch";
       "gca" = "git commit --amend";
-      "gcan" = "git commit --amend --no-edit";
-      "gacan" = "git add . && git commit --amend --no-edit";
       "gash" = "git stash";
       "gpop" = "git stash pop";
+      "gl" = "git log --oneline --graph --all --decorate";
       # Note: Bash aliases do not accept parameters. Use a shell function instead.
       runhspec =
         ''runhspec() { cabal test --test-options="--match=$1"; }; runhspec'';
