@@ -52,26 +52,10 @@
       android-tools
       vial
       discord
-      gimp
-      zoom-us
-      google-chrome
       docker
       docker-compose
       postman
-
-      scala
-      scalafmt
-      coursier
-      ivy
-      sbt
-      metals
-      openjdk
-      clang
-
-      jetbrains.idea-ultimate
       keepassxc
-
-      libsForQt5.arianna
     ];
 
     programs.java = {
