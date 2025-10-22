@@ -44,8 +44,9 @@
       android-studio
       (pkgs.writeShellScriptBin "myandroidstudio" ''
         #!/usr/bin/env bash
+        setxkbmap -layout us -variant colemak_dh
         adb devices
-        ${pkgs.android-studio}/bin/android-studio > /dev/null 2>&1 &
+        GDK_BACKEND=x11 ${pkgs.android-studio}/bin/android-studio > /dev/null 2>&1 &
       '')
       signal-desktop
       remnote
