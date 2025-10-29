@@ -56,7 +56,9 @@
       docker
       docker-compose
       postman
+      gimp
       keepassxc
+      zoom-us
     ];
 
     programs.java = {
