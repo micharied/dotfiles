@@ -59,6 +59,7 @@
       gimp
       keepassxc
       zoom-us
+      readest
     ];
 
     programs.java = {
