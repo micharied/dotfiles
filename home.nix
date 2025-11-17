@@ -56,7 +56,7 @@
       docker
       docker-compose
       postman
-      gimp
+      gimp3
       keepassxc
       zoom-us
       readest
