@@ -16,6 +16,8 @@
         user.name = "Micha Riedlinger";
         init.defaultBranch = "main";
         checkout.defaultRemote = "origin";
+        pull.rebase = true;
+        rebase.autoStash = true;
       };
     };
   };
