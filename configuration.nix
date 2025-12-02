@@ -195,8 +195,6 @@
   };
   services.thermald.enable = true;
 
-  services.preload.enable = true;
-
   services.tailscale.enable = true;
 
   programs.adb.enable = true;
