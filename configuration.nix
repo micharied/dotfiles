@@ -5,15 +5,14 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  
+
   # Limit the number of generations to keep in boot
   boot.loader.systemd-boot.configurationLimit = 2;
 
@@ -91,7 +90,7 @@
   users.users.micha = {
     isNormalUser = true;
     description = "Micha";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "docker" ];
     packages = with pkgs;
       [
         #  thunderbird
@@ -182,7 +181,7 @@
   #    nix-store --optimise
   # Refer to the following link for more details:
   # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-  nix.settings.auto-optimise-store = true;  
+  nix.settings.auto-optimise-store = true;
   services.auto-cpufreq.settings = {
     battery = {
       governor = "powersave";

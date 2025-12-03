@@ -90,7 +90,7 @@
       runhspec =
         ''runhspec() { cabal test --test-options="--match=$1"; }; runhspec'';
     };
-    
+
     programs.direnv = {
       enable = true;
       enableBashIntegration = true; # see note on other shells below
