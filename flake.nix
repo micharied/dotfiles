@@ -48,11 +48,12 @@
             ./hosts/macbook/darwin-configuration.nix
 
             home-manager.darwinModules.home-manager
-            {
+            ({ pkgs, ... }: {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.micha = mkHome;
-            }
+              home-manager.extraSpecialArgs = { inherit pkgs; };
+            })
           ];
         };
       };
