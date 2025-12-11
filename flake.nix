@@ -12,26 +12,48 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-
-          # make home-manager as a module of nixos
-          # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.micha = import ./home.nix;
-            # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-          }
-        ];
-      };
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs = inputs@{ nixpkgs, home-manager, nix-darwin, ... }:
+    let
+      mkHome = import ./home;
+    in {
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./configuration.nix
+
+            home-manager.nixosModules.home-manager
+            ({ pkgs, ... }: {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.micha = mkHome;
+              # Provide pkgs explicitly to home modules to avoid missing-argument recursion.
+              home-manager.extraSpecialArgs = { inherit pkgs; };
+            })
+          ];
+        };
+      };
+
+      darwinConfigurations = {
+        macbook = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin"; # Apple Silicon (M1/M2/M3/M4). Use x86_64-darwin for Intel Macs.
+          modules = [
+            ./hosts/macbook/darwin-configuration.nix
+
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.micha = mkHome;
+            }
+          ];
+        };
+      };
+    };
 }
