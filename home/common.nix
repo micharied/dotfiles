@@ -41,20 +41,22 @@
     # Cross-platform packages; Linux-only extras stay in home/linux.nix.
     home.packages = with pkgs; [
       vscode
-      mattermost-desktop
+      bitwarden-desktop
+      # mattermost-desktop
       thunderbird
-      nextcloud-client
-      android-studio
-      signal-desktop
-      remnote
+      # nextcloud-client
+      # android-studio
+      signal-desktop-bin
+      # remnote
       discord
       docker
       docker-compose
       postman
-      gimp3
+      # gimp3
       keepassxc
       zoom-us
-      readest
+      nodejs
+      # readest
     ];
 
     home.stateVersion = "24.11";

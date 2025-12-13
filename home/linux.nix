@@ -17,6 +17,12 @@
       android-tools
       vial
       kdePackages.kwallet
+      readest
+      gimp3
+      remnote
+      android-studio
+      nextcloud-client
+      mattermost-desktop
       (pkgs.writeShellScriptBin "myandroidstudio" ''
         #!/usr/bin/env bash
         setxkbmap -layout us -variant colemak_dh
