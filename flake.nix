@@ -17,9 +17,10 @@
       url = "github:LnL7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-darwin, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, nix-darwin, mac-app-util, ... }:
     let
       mkHome = import ./home;
     in {
@@ -46,9 +47,13 @@
           system = "aarch64-darwin"; # Apple Silicon (M1/M2/M3/M4). Use x86_64-darwin for Intel Macs.
           modules = [
             ./hosts/macbook/darwin-configuration.nix
+            mac-app-util.darwinModules.default
 
             home-manager.darwinModules.home-manager
             ({ pkgs, ... }: {
+              home-manager.sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.micha = mkHome;
