@@ -43,6 +43,7 @@
       vscode
       thunderbird
       signal-desktop-bin
+      firefox
       discord
       docker
       docker-compose
