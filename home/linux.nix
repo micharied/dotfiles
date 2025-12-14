@@ -23,6 +23,7 @@
       android-studio
       nextcloud-client
       mattermost-desktop
+      bitwarden-desktop
       (pkgs.writeShellScriptBin "myandroidstudio" ''
         #!/usr/bin/env bash
         setxkbmap -layout us -variant colemak_dh
