@@ -1,4 +1,14 @@
-# The start of my nix setup 
+# The start of my nix setup
+
+## Quick start
+- NixOS: from repo root run `sudo nixos-rebuild switch --flake .#nixos`.
+- macOS: first time run `nix run nix-darwin -- switch --flake .#macbook`, afterwards `sudo darwin-rebuild switch --flake .#macbook`.
+
+## Updating
+```
+nix flake update
+sudo nixos-rebuild switch --flake .#nixos   # or: sudo darwin-rebuild switch --flake .#macbook
+```
 
 ## Fix "no space left on device" error during rebuild
 ```
