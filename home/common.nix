@@ -45,7 +45,6 @@
       signal-desktop-bin
       firefox
       discord
-      spotify
       docker
       docker-compose
       postman
