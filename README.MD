@@ -21,3 +21,5 @@ sudo nix-collect-garbage --delete-older-than 7d
 2. https://github.com/haglobah/nix-home/
 3. https://github.com/haglobah/mynix
 4. https://github.com/kenranunderscore/dotfiles
+
+
