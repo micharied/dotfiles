@@ -36,6 +36,7 @@
     # Cross-platform packages; Linux-only extras stay in home/linux.nix.
     home.packages = with pkgs; [
       vscode
+      cachix
       rsync
       thunderbird
       signal-desktop-bin
@@ -47,6 +48,7 @@
       keepassxc
       zoom-us
       nodejs
+      mcp-nixos
     ];
 
     home.stateVersion = "24.11";
