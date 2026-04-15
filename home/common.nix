@@ -36,6 +36,7 @@
     # Cross-platform packages; Linux-only extras stay in home/linux.nix.
     home.packages = with pkgs; [
       vscode
+      claude-code
       cachix
       rsync
       thunderbird
