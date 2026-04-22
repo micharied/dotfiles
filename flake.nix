@@ -1,66 +1,34 @@
 {
-  description = "NixOS configuration";
+  description = "macOS nix-darwin configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
-    # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
-      # The `follows` keyword in inputs is used for inheritance.
-      # Here, `inputs.nixpkgs` of home-manager is kept consistent with
-      # the `inputs.nixpkgs` of the current flake,
-      # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-      # Match the nixpkgs release (25.11) to avoid branch mismatch errors on macOS.
       url = "github:LnL7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mac-app-util.url = "github:hraban/mac-app-util";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nix-darwin, mac-app-util, ... }:
-    let
-      mkHome = import ./home;
-    in {
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./configuration.nix
+  outputs = { nixpkgs, home-manager, nix-darwin, mac-app-util, ... }: {
+    darwinConfigurations.MacBook-Air-von-Micha = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ./darwin-configuration.nix
+        mac-app-util.darwinModules.default
 
-            home-manager.nixosModules.home-manager
-            ({ pkgs, ... }: {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.micha = mkHome;
-              # Provide pkgs explicitly to home modules to avoid missing-argument recursion.
-              home-manager.extraSpecialArgs = { inherit pkgs; };
-            })
-          ];
-        };
-      };
-
-      darwinConfigurations = {
-        macbook = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin"; # Apple Silicon (M1/M2/M3/M4). Use x86_64-darwin for Intel Macs.
-          modules = [
-            ./hosts/macbook/darwin-configuration.nix
-            mac-app-util.darwinModules.default
-
-            home-manager.darwinModules.home-manager
-            ({ pkgs, ... }: {
-              home-manager.sharedModules = [
-                mac-app-util.homeManagerModules.default
-              ];
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.micha = mkHome;
-              home-manager.extraSpecialArgs = { inherit pkgs; };
-            })
-          ];
-        };
-      };
+        home-manager.darwinModules.home-manager
+        ({ pkgs, ... }: {
+          home-manager.sharedModules = [ mac-app-util.homeManagerModules.default ];
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.micha = import ./home.nix;
+        })
+      ];
     };
+  };
 }

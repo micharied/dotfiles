@@ -1,20 +1,25 @@
 { config, pkgs, ... }:
 
 {
-  # Core Nix/Darwin plumbing (daemon is managed automatically by nix-darwin)
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Shell/users
   programs.zsh.enable = true;
   users.users.micha = {
     home = "/Users/micha";
     shell = pkgs.zsh;
   };
 
-  # Optional macOS niceties
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  # Keep darwin system state value pinned when upgrading
+  system.activationScripts.resignFish = {
+    text = ''
+      fish_bin="${pkgs.fish}/bin/fish"
+      if [ -f "$fish_bin" ]; then
+        /usr/bin/codesign --sign - --force --preserve-metadata=entitlements,requirements,flags,runtime "$fish_bin" 2>/dev/null || true
+      fi
+    '';
+  };
+
   system.stateVersion = 5;
 }
