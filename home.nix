@@ -50,6 +50,7 @@
       ".envrc"
       ".direnv/"
       ".calva"
+      ".claude/"
     ];
     settings = {
       user.email = "kontakt@micha-riedlinger.de";
@@ -65,6 +66,7 @@
     vscode
     claude-code
     glab
+    khard
     cachix
     rsync
     thunderbird
