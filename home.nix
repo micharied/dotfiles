@@ -52,6 +52,7 @@
       ".calva"
       ".claude/"
       ".scratch/"
+      "docs/agents/"
     ];
     settings = {
       user.email = "kontakt@micha-riedlinger.de";
