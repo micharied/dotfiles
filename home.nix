@@ -51,6 +51,7 @@
       ".direnv/"
       ".calva"
       ".claude/"
+      ".scratch/"
     ];
     settings = {
       user.email = "kontakt@micha-riedlinger.de";
