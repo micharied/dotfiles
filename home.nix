@@ -1,6 +1,45 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
+  imports = [
+    inputs.ag-starter.homeModules.ldap
+    inputs.ag-starter.homeModules.thunderbird
+  ];
+
+  active-group.ldap = {
+    userName = "riedlinger";
+    fullName = "Micha Riedlinger";
+    email = "micha.riedlinger@active-group.de";
+    phoneNumber = "+49 157 37176859";
+  };
+
+  active-group.thunderbird = {
+    enable = true;
+    calendars = {
+      enableAGCalendars = true;
+      micha = {
+        readOnly = false;
+        suppressAlarms = false;
+        color = "#ff2968";
+      };
+      geburtstage.color = "#0000ff";
+      regeltermine.color = "#0000ff";
+
+      bianca-schulungen.enable = false;
+      felix-schulungen.enable = false;
+      marco-schulungen.enable = false;
+      marcus-schulungen.enable = false;
+      markus-schulungen.enable = false;
+      pr.enable = false;
+    };
+  };
+
   home.username = "micha";
   home.homeDirectory = "/Users/micha";
   home.stateVersion = "24.11";
@@ -37,15 +76,21 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = false;
-    package = pkgs.direnv.overrideAttrs (old: { doCheck = false; });
+    package = pkgs.direnv.overrideAttrs (old: {
+      doCheck = false;
+    });
   };
 
   programs.git = {
     enable = true;
-    includes = [{
-      condition = "gitdir:~/dev/ag/";
-      contents = { user.email = "micha.riedlinger@active-group.de"; };
-    }];
+    includes = [
+      {
+        condition = "gitdir:~/dev/ag/";
+        contents = {
+          user.email = "micha.riedlinger@active-group.de";
+        };
+      }
+    ];
     ignores = [
       ".envrc"
       ".direnv/"
@@ -71,8 +116,7 @@
     khard
     cachix
     rsync
-    thunderbird
-    signal-desktop-bin
+    signal-desktop
     firefox
     discord
     docker
@@ -81,6 +125,7 @@
     keepassxc
     zoom-us
     nodejs
+    gh
     mcp-nixos
   ];
 }
