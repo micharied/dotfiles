@@ -10,35 +10,8 @@
   imports = [
     inputs.ag-starter.homeModules.ldap
     inputs.ag-starter.homeModules.thunderbird
+    ./email.nix
   ];
-
-  active-group.ldap = {
-    userName = "riedlinger";
-    fullName = "Micha Riedlinger";
-    email = "micha.riedlinger@active-group.de";
-    phoneNumber = "+49 157 37176859";
-  };
-
-  active-group.thunderbird = {
-    enable = true;
-    calendars = {
-      enableAGCalendars = true;
-      micha = {
-        readOnly = false;
-        suppressAlarms = false;
-        color = "#ff2968";
-      };
-      geburtstage.color = "#0000ff";
-      regeltermine.color = "#0000ff";
-
-      bianca-schulungen.enable = false;
-      felix-schulungen.enable = false;
-      marco-schulungen.enable = false;
-      marcus-schulungen.enable = false;
-      markus-schulungen.enable = false;
-      pr.enable = false;
-    };
-  };
 
   home.username = "micha";
   home.homeDirectory = "/Users/micha";
